@@ -4,7 +4,7 @@
 
 #include <vector>
 #include <mutex>
-#include <condition_variable"
+#include <condition_variable>
 
 
 template<typename T>
@@ -29,7 +29,7 @@ public:
     }
 
     void wait_and_pop_back(T& popped_value){
-        std::unique_lock<std;:mutex> lock(the_mutex);
+        std::unique_lock<std::mutex> lock(the_mutex);
         while(the_vector.empty()){
             the_condition_variable.wait(lock);
         }
@@ -41,5 +41,5 @@ private:
     std::vector<T> the_vector;
     mutable std::mutex the_mutex;
     std::condition_variable the_condition_variable;
-}
+};
 #endif
